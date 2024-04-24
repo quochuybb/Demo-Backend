@@ -1,15 +1,34 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import Method.CreateUserAccount;
+import Method.CreateUserAccount.*;
+import User.User.*;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        boolean isRunning = true;
+        Scanner scanner = new Scanner(System.in);
+        while (isRunning){
+            System.out.println("User Management Program");
+            System.out.println("1. Create user account");
+            System.out.println("2. Check exist user");
+            System.out.println("3. Search user");
+            System.out.println("4. Update User");
+            System.out.println("5. Save to file");
+            System.out.println("6. Print all list from file");
+            System.out.println("7. Exit");
+            int choice = scanner.nextInt();
+            switch (choice){
+                case 1:
+                    CreateUserAccount method = new CreateUserAccount();
+                    method.Create();
+                    break;
+                case 7:
+                    isRunning = false;
+                    break;
+                default:
+                    System.out.println("Lua chon khong hop le");
+            }
         }
     }
 }
