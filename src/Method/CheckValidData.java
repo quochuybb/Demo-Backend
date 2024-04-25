@@ -9,13 +9,13 @@ public class CheckValidData {
             for (int i = 0; i < string.length() ; i++){
                 if (string.charAt(i) == ' '){
                     if (index == 5){
-                        System.out.println("Loi Username co khoang trang");
+                        System.out.println("Error Username has spaces");
                     }
                     else if (index == 6){
-                        System.out.println("Loi Password co khoang trang");
+                        System.out.println("Error Password has spaces");
                     }
                     else {
-                        System.out.println("Loi Phone number co khoang trang");
+                        System.out.println("Error Phone has spaces");
                     }
                     return false;
                 }
@@ -23,13 +23,13 @@ public class CheckValidData {
             return true;
         }
         if (index == 5){
-            System.out.println("Loi Username khong du 5 ki tu");
+            System.out.println("Username hasn't to be at least five characters");
         }
         else if (index == 6){
-            System.out.println("Loi Password khong du 6 ki tu");
+            System.out.println("Password hasn't to be at least 6 characters");
         }
         else {
-            System.out.println("Loi Phone number khong du 10 so");
+            System.out.println("Phone hasn't to be at least ten characters");
         }
         return false;
     }
@@ -43,7 +43,7 @@ public class CheckValidData {
         if (password.equals(confirmPassword)){
             return true;
         }
-        System.out.println("Loi mat khau khong dung");
+        System.out.println("Error of incorrect password");
         return false;
     }
     public boolean CheckEmail(String email){
@@ -53,7 +53,7 @@ public class CheckValidData {
         if (matcher.find()){
             return true;
         }
-        System.out.println("Loi email khong dung format");
+        System.out.println("Error of incorrect email format");
         return false;
     }
     public boolean CheckError(String userName, String phone, String email, String password, String confirmPassword){
