@@ -10,42 +10,49 @@ import java.util.regex.Pattern;
 
 public class CreateUserAccount {
     public List<User> list = new ArrayList<>();
-    public void Create(){
+    public void Create(int root){
         String regex = "^[a-zA-Z]";
         Pattern pattern =  Pattern.compile(regex);
         Matcher matcher;
         Scanner scanner = new Scanner(System.in);
-        int isCountinue = 1;
-        while (isCountinue == 1){
+        String isCountinue = "N";
+        while (isCountinue.equals("N") || isCountinue.equals("n")){
             try {
                 System.out.println("Input Username: ");
-                String userName = scanner.next();
+                String userName = scanner.nextLine();
                 System.out.println("Input Firstname: ");
-                String firstName = scanner.next();
+                String firstName = scanner.nextLine();
                 if (!pattern.matcher(firstName).find()){
                     System.out.println("Error Firstname have number");
                     break;
                 }
                 System.out.println("Input Lastname: ");
-                String lastName = scanner.next();
+                String lastName = scanner.nextLine();
                 if (!pattern.matcher(lastName).find()){
                     System.out.println("Error Lastname have number");
                     break;
                 }
                 System.out.println("Input Password");
-                String password = scanner.next();
+                String password = scanner.nextLine();
                 System.out.println("Input Password");
-                String confirmPassword = scanner.next();
+                String confirmPassword = scanner.nextLine();
                 System.out.println("Input Phone");
-                String phone = scanner.next();
+                String phone = scanner.nextLine();
                 System.out.println("Input Email");
-                String email = scanner.next();
+                String email = scanner.nextLine();
                 User user = new User(userName,firstName,lastName,phone,email,password,confirmPassword);
                 list.add(user);
-                System.out.println("Back to menu: ");
-                System.out.println("0. Yes");
-                System.out.println("1. No");
-                isCountinue = scanner.nextInt();
+                if (root == 1){
+                    while (isCountinue.equals("Y") || isCountinue.equals("y") || isCountinue.equals("N") || isCountinue.equals("n")){
+                        System.out.println("Back to menu: ");
+                        System.out.println("Y/N");
+                        isCountinue = scanner.nextLine();
+                        if (isCountinue.equals("Y") || isCountinue.equals("y") || isCountinue.equals("N") || isCountinue.equals("n")){
+                            break;
+                        }
+                    }
+                }
+
             }
             catch (Exception e){
                 System.out.println("Error input");
