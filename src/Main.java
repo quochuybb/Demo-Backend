@@ -3,6 +3,8 @@ import Method.ActiveWithFile;
 import User.User;
 
 import java.io.FileNotFoundException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -69,8 +71,8 @@ public class Main {
                             line.add(CreateUser.list.get(i).getLastName());
                             line.add(CreateUser.list.get(i).getEmail());
                             line.add(CreateUser.list.get(i).getPhone());
-                            line.add(CreateUser.list.get(i).getPassword());
-                            line.add(CreateUser.list.get(i).getConfirmPassword());
+                            String pass = hashInfo(CreateUser.list.get(i).getPassword());
+                            line.add(pass);
                             activeWithFile.WriteTextToFile(line);
                         }
                         break;
@@ -91,5 +93,23 @@ public class Main {
                 System.out.println("Error: " + e.getMessage());
             }
         }
+    }
+    public static String hashInfo(String info){
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = digest.digest(info.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

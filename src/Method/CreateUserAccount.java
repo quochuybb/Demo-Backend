@@ -34,7 +34,7 @@ public class CreateUserAccount {
                 }
                 System.out.println("Input Password");
                 String password = scanner.nextLine();
-                System.out.println("Input Password");
+                System.out.println("Confirm Password");
                 String confirmPassword = scanner.nextLine();
                 System.out.println("Input Phone");
                 String phone = scanner.nextLine();
@@ -52,7 +52,6 @@ public class CreateUserAccount {
                         }
                     }
                 }
-
             }
             catch (Exception e){
                 System.out.println("Error input");

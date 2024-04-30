@@ -1,12 +1,12 @@
 package Method;
 
 import User.User;
-
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 public class ActiveWithFile {
     CreateUserAccount createUserAccount = new CreateUserAccount();
     String line;
@@ -14,7 +14,7 @@ public class ActiveWithFile {
     }
 
     public void WriteTextToFile(List<String> line){
-        if (CheckExist(line.get(0))){
+        if (!CheckExist(line.get(0))){
             for (int i =0 ; i < line.size(); i++){
                 try {
                     FileWriter printWrite = new FileWriter("user.dat", true);
@@ -88,7 +88,6 @@ public class ActiveWithFile {
             line.add(createUserAccount.list.get(i).getEmail());
             line.add(createUserAccount.list.get(i).getPhone());
             line.add(createUserAccount.list.get(i).getPassword());
-            line.add(createUserAccount.list.get(i).getConfirmPassword());
             WriteTextToFile(line);
         }
     }
@@ -123,10 +122,16 @@ public class ActiveWithFile {
     }
     public void ReadListFromFile(){
         try {
+            HashMap<String, String> listInfo = new HashMap<>();
             FileReader fileReader = new FileReader("user.dat");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null){
-                System.out.println(line);
+                String[] parts = line.split(" - ");
+                listInfo.put(parts[0],String.join(" - ",parts));
+            }
+            TreeMap<String, String> sortedMap = new TreeMap<>(listInfo);
+            for (Map.Entry<String, String> entry : sortedMap.entrySet()) {
+                System.out.println(entry.getValue());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
