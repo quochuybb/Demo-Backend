@@ -18,6 +18,7 @@ public class CreateUserAccount {
         String isCountinue = "N";
         while (isCountinue.equals("N") || isCountinue.equals("n")){
             try {
+                System.out.println("Input information user.");
                 System.out.println("Input Username: ");
                 String userName = scanner.nextLine();
                 System.out.println("Input Firstname: ");

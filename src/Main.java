@@ -50,7 +50,9 @@ public class Main {
                         activeWithFile.FindInfo();
                         break;
                     case 4:
-                        System.out.println("Enter Username:");
+                        System.out.println("1. Update Info:");
+                        System.out.println("2. Delete Info:");
+                        System.out.println("Enter Your Choice: ");
                         choice = scanner.nextInt();
                         if (choice == 1){
                             System.out.println("Enter Username:");
