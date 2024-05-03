@@ -16,7 +16,7 @@ public class CreateUserAccount {
         Matcher matcher;
         Scanner scanner = new Scanner(System.in);
         String isCountinue = "N";
-        while (isCountinue.equals("N") || isCountinue.equals("n")){
+        while (isCountinue.equals("N") ){
             try {
                 System.out.println("Input information user.");
                 System.out.println("Input Username: ");
@@ -44,15 +44,16 @@ public class CreateUserAccount {
                 User user = new User(userName,firstName,lastName,phone,email,password,confirmPassword);
                 list.add(user);
                 if (root == 1){
-                    while (isCountinue.equals("Y") || isCountinue.equals("y") || isCountinue.equals("N") || isCountinue.equals("n")){
+                    while (isCountinue.equals("Y") || isCountinue.equals("N") ){
                         System.out.println("Back to menu: ");
                         System.out.println("Y/N");
-                        isCountinue = scanner.nextLine();
-                        if (isCountinue.equals("Y") || isCountinue.equals("y") || isCountinue.equals("N") || isCountinue.equals("n")){
+                        isCountinue = scanner.nextLine().toUpperCase();
+                        if (isCountinue.equals("Y") || isCountinue.equals("N") ){
                             break;
                         }
                     }
                 }
+                isCountinue = "Y";
             }
             catch (Exception e){
                 System.out.println("Error input");
